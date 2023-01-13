@@ -1,3 +1,7 @@
+# CSS Animations and Transition Frontend Masters Course
+
+## A repo to follow along with this [course](https://frontendmasters.com/courses/css-animations/)
+
 # Frontend Masters CSS Animations Workshop
 
 Welcome to the [Frontend Masters CSS Animations Workshop](https://frontendmasters.com/courses/css-animations/)! In this workshop, you will:

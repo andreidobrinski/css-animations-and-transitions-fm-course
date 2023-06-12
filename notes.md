@@ -19,3 +19,11 @@ Cubic Bezier function
 
 - `cubic-bezier(0.5, 0, 0.5, 1)`
 - keep the second number `0` and the last number `1`
+
+What to animate:
+
+- good: transform, opacity. This uses the GPU and is more performant. It does not necessitate a layout shift
+- ok: colour and background. Uses the CPU but does not trigger a layout
+- not good: height, width, left, right. Triggers a layout and needs to reflow the page and neighbouring elements
+
+60fps is great for animations because that is the monitor refresh rate.

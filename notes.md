@@ -14,3 +14,8 @@
 - Duration: how long an iteration of an animation takes to complete
 - Delay: how long it takes before an animation starts. Only happens once
 - Timing: the easing of an animation
+
+Cubic Bezier function
+
+- `cubic-bezier(0.5, 0, 0.5, 1)`
+- keep the second number `0` and the last number `1`

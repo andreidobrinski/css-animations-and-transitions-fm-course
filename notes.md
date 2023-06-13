@@ -27,3 +27,6 @@ What to animate:
 - not good: height, width, left, right. Triggers a layout and needs to reflow the page and neighbouring elements
 
 60fps is great for animations because that is the monitor refresh rate.
+
+Animation Play State
+`animation-play-state: paused` pauses the animation

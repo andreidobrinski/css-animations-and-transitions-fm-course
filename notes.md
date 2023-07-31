@@ -30,3 +30,7 @@ What to animate:
 
 Animation Play State
 `animation-play-state: paused` pauses the animation
+
+## Choreography
+
+For nested animations use a container element, since multiple keyframe animations cannot happen on the same element at the same time.

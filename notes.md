@@ -34,3 +34,24 @@ Animation Play State
 ## Choreography
 
 For nested animations use a container element, since multiple keyframe animations cannot happen on the same element at the same time.
+
+## Data States
+
+HTML attrs prepended with `data-` will appear as an object as `.dataset`. For eg, given that we have a
+
+```
+<div id="app" data-state="loading" />
+```
+
+we could do:
+
+```
+const app = document.querySelector('#app');
+app.dataset
+// returns
+{
+  state: 'loading'
+}
+// and then we can do assigments such as
+app.dataset.state = 'success'
+```

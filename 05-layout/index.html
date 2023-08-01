@@ -27,35 +27,47 @@
     const captionEl = document.querySelector('.ui-caption');
     const appEl = document.querySelector('#app');
 
-    appEl.addEventListener('click', () => {
-      // FIRST
-      const firstRect = figureEl.getBoundingClientRect();
+    function flip(fn, firstEls, lastEls = firstEls) {
+      const firstRects = firstEls.map(el => {
+        return el.getBoundingClientRect()
+      })
 
-      app.dataset.state =
-        app.dataset.state === 'collapsed' ? 'expanded' : 'collapsed';
+      fn();
 
       requestAnimationFrame(() => {
-        // LAST
-        const lastRect = figureEl.getBoundingClientRect();
+        const lastRects = lastEls.map(el => {
+          return el.getBoundingClientRect()
+        })
 
-        const dx = firstRect.left - lastRect.left;
-        const dy = firstRect.top - lastRect.top;
-        const dw = firstRect.width / lastRect.width;
-        const dh = firstRect.height / lastRect.height;
+        lastRects.forEach((lastRect, i) => {
+          const firstRect = firstRects[i];
+          const lastEl = lastEls[i];
 
-        figureEl.style.setProperty('--dx', dx);
-        figureEl.style.setProperty('--dy', dy);
-        figureEl.style.setProperty('--dw', dw);
-        figureEl.style.setProperty('--dh', dh);
+          const dx = firstRect.left - lastRect.left;
+          const dy = firstRect.top - lastRect.top;
+          const dw = firstRect.width / lastRect.width;
+          const dh = firstRect.height / lastRect.height;
 
-        // INVERT
-        figureEl.dataset.flip = 'invert';
+          lastEl.style.setProperty('--dx', dx);
+          lastEl.style.setProperty('--dy', dy);
+          lastEl.style.setProperty('--dw', dw);
+          lastEl.style.setProperty('--dh', dh);
+
+          lastEl.dataset.flip = 'invert';
+        })
 
         requestAnimationFrame(() => {
-          // PLAY
-          figureEl.dataset.flip = 'play';
+          lastEls.forEach(lastEl => {
+            lastEl.dataset.flip = 'play'
+          })
         })
-      });
+      })
+    }
+
+    appEl.addEventListener('click', () => {
+      flip(() => {
+        app.dataset.state = app.dataset.state === 'collapsed' ? 'expanded' : 'collapsed';
+      }, [figureEl, captionEl])
     });
     // ...
   </script>

@@ -35,15 +35,17 @@ body {
   }
 
   &[data-state='subscribe'] {
-    // Add an animation here
+    animation: slide-up 1s both;
   }
 
   &[data-state='success'] {
-    // Change the color and/or add an animation here
+    --color: rgb(43, 184, 102);
+    animation: good-job 1s both;
   }
 
   &[data-state='error'] {
-    // Change the color and/or add an animation here
+    --color: rgb(237, 80, 41);
+    animation: shake 1s both;
   }
 
   > .ui-input,
@@ -120,5 +122,17 @@ body {
   from,
   to {
     transform: none;
+  }
+}
+
+@keyframes good-job {
+  from {
+    transform: none;
+  }
+  50% {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0) scaleY(0.8);
   }
 }

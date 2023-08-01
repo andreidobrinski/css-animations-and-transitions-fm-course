@@ -65,14 +65,14 @@ body {
   }
 
   // Add invert styles here to :before
-  &[data-flip="invert"] {
+  &[data-flip="invert"]:before {
     transform:
       translate(calc(var(--dx) * 1px), calc(var(--dy) * 1px))
       scale(var(--dw), var(--dh));
   }
 
   // Add play styles here to :before
-  &[data-flip="play"] {
+  &[data-flip="play"]:before {
     transform: none;
     transition: transform 0.3s;
   }

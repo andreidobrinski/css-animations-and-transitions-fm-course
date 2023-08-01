@@ -28,16 +28,15 @@
     const appEl = document.querySelector('#app');
 
     appEl.addEventListener('click', () => {
+      // FIRST
       const firstRect = figureEl.getBoundingClientRect();
-      console.log('first', firstRect);
 
       app.dataset.state =
         app.dataset.state === 'collapsed' ? 'expanded' : 'collapsed';
 
       requestAnimationFrame(() => {
+        // LAST
         const lastRect = figureEl.getBoundingClientRect();
-
-        console.log('last', lastRect);
 
         const dx = firstRect.left - lastRect.left;
         const dy = firstRect.top - lastRect.top;
@@ -49,9 +48,11 @@
         figureEl.style.setProperty('--dw', dw);
         figureEl.style.setProperty('--dh', dh);
 
+        // INVERT
         figureEl.dataset.flip = 'invert';
 
         requestAnimationFrame(() => {
+          // PLAY
           figureEl.dataset.flip = 'play';
         })
       });

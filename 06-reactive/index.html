@@ -13,6 +13,11 @@
   <script>
     const circleEl = document.querySelector('.circle');
 
-    // ...
+    document.body.addEventListener('pointermove', event => {
+      const { clientX, clientY } = event;
+
+      circleEl.style.setProperty('--x', clientX);
+      circleEl.style.setProperty('--y', clientY);
+    })
   </script>
 </html>

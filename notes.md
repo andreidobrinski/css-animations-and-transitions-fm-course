@@ -55,3 +55,16 @@ app.dataset
 // and then we can do assigments such as
 app.dataset.state = 'success'
 ```
+
+## Prefers reduced motion
+
+- can be either `no-preference` or `reduce`
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0s !important;
+    transition-duration: 0s !important;
+  }
+}
+```

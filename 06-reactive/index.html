@@ -16,6 +16,9 @@
     const currentPoint = { x: 0, y: 0 };
     const targetPoint = { x: 0, y: 0 };
 
+    // 1 is active, 0 is inactive
+    let lerpState = 0;
+
     function lerp() {
       const dx = targetPoint.x - currentPoint.x;
       const dy = targetPoint.y - currentPoint.y;
@@ -26,21 +29,29 @@
       circleEl.style.setProperty('--x', currentPoint.x);
       circleEl.style.setProperty('--y', currentPoint.y);
 
-      // add stopping condition
-      // if (Math.abs(dx) < 1 || Math.abs(dy) < 1) {
-        
-      // }
+      if (dx < 1) {
+        lerpState = 0;
+        return;
+      }
 
       requestAnimationFrame(lerp);
     }
 
     lerp();
 
+    function doLerp() {
+      if (lerpState === 0) {
+        lerp();
+      }
+    }
+
     document.body.addEventListener('pointermove', event => {
       const { clientX, clientY } = event;
 
       targetPoint.x = clientX;
       targetPoint.y = clientY;
+
+      doLerp();
     })
   </script>
 </html>
